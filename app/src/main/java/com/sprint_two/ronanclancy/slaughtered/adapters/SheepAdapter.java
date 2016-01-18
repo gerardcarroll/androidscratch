@@ -17,7 +17,7 @@ import com.sprint_two.ronanclancy.slaughtered.R;
 import com.sprint_two.ronanclancy.slaughtered.models.Sheep;
 
 import java.util.List;
-
+//cows are nicer
 /**
  * Sheep adapter
  * <p/>
