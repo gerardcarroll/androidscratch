@@ -25,7 +25,7 @@ import com.sprint_two.ronanclancy.slaughtered.frags.SlaughteredSheepFragment;
 import com.sprint_two.ronanclancy.slaughtered.models.Sheep;
 
 import java.util.List;
-
+//cows are nicer
 import static android.support.v4.app.ActivityCompat.startActivity;
 
 /**
