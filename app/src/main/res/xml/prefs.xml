@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Font">
+
+        <CheckBoxPreference
+            android:key="change_font_key"
+            android:summary="Change the font size displayed to the user"
+            android:title="Enlarge Font Size"
+            android:defaultValue="false"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

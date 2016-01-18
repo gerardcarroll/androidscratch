@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Slaughtered</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!--Nav drawer-->
+    <string name="drawer_menu_nav_title">Nav</string>
+    <string name="drawer_menu_other_title">Other</string>
+    <string name="drawer_menu_home">Home</string>
+    <string name="drawer_menu_slaughtered">Slaughtered Sheep</string>
+    <string name="drawer_menu_settings">Setting</string>
+</resources>

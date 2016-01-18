@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_flat_emerald">#37d077</color>
+    <color name="color_flat_nepheritis">#16a085</color>
+    <color name="color_flat_hole">#2980b9</color>
+    <color name="color_flat_alizarin">#c0392b</color>
+    <color name="color_flat_sun_flower">#f1c40f</color>
+    <color name="color_flat_asphalt">#34495e</color>
+</resources>
