@@ -11,5 +11,6 @@
     <string name="drawer_menu_other_title">Other</string>
     <string name="drawer_menu_home">Home</string>
     <string name="drawer_menu_slaughtered">Slaughtered Sheep</string>
-    <string name="drawer_menu_settings">Setting</string>
+    <string name="drawer_menu_settings">Settings</string>
+    <string name="toolbar_home_frag_title">Home</string>
 </resources>

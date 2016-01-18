@@ -23,8 +23,6 @@ import java.util.List;
  */
 public class MainFragment extends Fragment {
 
-    private static final String TOOLBAR_HOME_FRAG_TITLE = "Home";
-
     private RecyclerView sheepsRecyclerView;
 
     private List<Sheep> sheeps;
@@ -38,7 +36,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(TOOLBAR_HOME_FRAG_TITLE);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.toolbar_home_frag_title);
 
         db = new SQLiteHelper(getContext());
 
