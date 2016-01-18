@@ -1,13 +1,21 @@
 package com.sprint_two.ronanclancy.slaughtered.frags;
 
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.sprint_two.ronanclancy.slaughtered.R;
+import com.sprint_two.ronanclancy.slaughtered.db.SQLiteHelper;
+import com.sprint_two.ronanclancy.slaughtered.models.Sheep;
 
 /**
  * SheepFragment
@@ -16,7 +24,8 @@ import com.sprint_two.ronanclancy.slaughtered.R;
  */
 public class SheepFragment extends Fragment {
 
-    private static final String TOOLBAR_SHEEP_FRAG_TITLE = "Sheep";
+    private static final String TOOLBAR_SHEEP_FRAG_TITLE = "Loads of Sheep";
+    SQLiteHelper dbHelper;
 
     public SheepFragment() {
     }
@@ -24,10 +33,20 @@ public class SheepFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        dbHelper  = new SQLiteHelper(getContext());
+
         View view = inflater.inflate(R.layout.fragment_sheep, container, false);
 
         assert ((AppCompatActivity)getActivity()).getSupportActionBar() != null;
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(TOOLBAR_SHEEP_FRAG_TITLE);
+
+        Bundle extras = getArguments();
+        int sheepId = extras.getInt("sheepId");
+        Sheep sheep = dbHelper.getSheep(sheepId);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(sheep.getName());
+        ImageView imageView = (ImageView) view.findViewById(R.id.sheepProfilePic);
+        imageView.setImageResource(sheep.getPhotoId());
         return view;
     }
 
