@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.sprint_two.ronanclancy.slaughtered.models.Sheep;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -73,7 +74,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
      */
     public List<Sheep> getAllSheeps() {
 
-        List<Sheep> sheeps = new LinkedList<>();
+        List<Sheep> sheeps = new ArrayList<>();
 
         String query = "SELECT  * FROM " + DATABASE_TABLE_SHEEP;
 
