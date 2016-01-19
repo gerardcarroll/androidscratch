@@ -47,7 +47,9 @@ public class SheepFragment extends Fragment {
 
         TextView txtAge = (TextView) view.findViewById(R.id.txtAgeValue);
         txtAge.setText(sheep.getAge());
+
+        TextView txtWeight = (TextView) view.findViewById(R.id.txtWeightValue);
+        txtWeight.setText(sheep.getWeight());
         return view;
     }
-
 }
