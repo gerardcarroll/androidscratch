@@ -74,7 +74,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     /**
      * @return List<Sheep> returns a list of all living sheep
      */
-    public List<Sheep> getAllSheeps() {
+    public List<Sheep> getAllLivingSheeps() {
 
         List<Sheep> sheeps = new ArrayList<>();
 
