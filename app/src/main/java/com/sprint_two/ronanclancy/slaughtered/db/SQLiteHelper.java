@@ -37,6 +37,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     private static final String KEY_ALIVE = "alive";
 
+    private static final String SHEEP_ALIVE = "0";
+
     private static final String[] COLUMNS = {KEY_ID, KEY_NAME, KEY_AGE, KEY_WEIGHT, KEY_PHOTO_ID};
 
     public SQLiteHelper(Context context) {
@@ -70,13 +72,13 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * @return List<Sheep> returns a list of all sheep
+     * @return List<Sheep> returns a list of all living sheep
      */
-    public List<Sheep> getAllSheeps() {
+    public List<Sheep> getAllLivingSheeps() {
 
         List<Sheep> sheeps = new ArrayList<>();
 
-        String query = "SELECT  * FROM " + DATABASE_TABLE_SHEEP;
+        String query = "SELECT  * FROM " + DATABASE_TABLE_SHEEP + " WHERE " + KEY_ALIVE + " = " + SHEEP_ALIVE;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);

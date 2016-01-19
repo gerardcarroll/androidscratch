@@ -1,5 +1,6 @@
 package com.sprint_two.ronanclancy.slaughtered.frags;
 
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import com.sprint_two.ronanclancy.slaughtered.adapters.SheepAdapter;
 import com.sprint_two.ronanclancy.slaughtered.db.SQLiteHelper;
 import com.sprint_two.ronanclancy.slaughtered.models.Sheep;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,9 +25,13 @@ import java.util.List;
  */
 public class MainFragment extends Fragment {
 
+    private static final String SHEEP_LIST_SAVED_INSTANCE_KEY = "SHEEP";
+
+    private List<Sheep> sheeps = new ArrayList<>();
+
     private RecyclerView sheepsRecyclerView;
 
-    private List<Sheep> sheeps;
+    private SheepAdapter adapter;
 
     private SQLiteHelper db;
 
@@ -35,28 +41,42 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.toolbar_home_frag_title);
-
         db = new SQLiteHelper(getContext());
+
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.drawer_menu_home);
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         sheepsRecyclerView = (RecyclerView) view.findViewById(R.id.sheep_recycler_view);
         sheepsRecyclerView.setLayoutManager(llm);
 
-        initializeData();
+        /**
+         * If savedInstance has our sheep list, no need to fetch it again
+         */
+        if (savedInstanceState != null) {
+            sheeps = savedInstanceState.getParcelableArrayList(SHEEP_LIST_SAVED_INSTANCE_KEY);
+        } else {
+            initializeData();
+        }
         initializeAdapter();
 
         return view;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(SHEEP_LIST_SAVED_INSTANCE_KEY, (ArrayList<? extends Parcelable>) sheeps);
+    }
+
 
     private void initializeData() {
-        sheeps = db.getAllSheeps();
+        sheeps = db.getAllLivingSheeps();
     }
 
     private void initializeAdapter() {
-        SheepAdapter adapter = new SheepAdapter(sheeps, getContext());
+        adapter = new SheepAdapter(sheeps, getContext());
         sheepsRecyclerView.setAdapter(adapter);
     }
 }
