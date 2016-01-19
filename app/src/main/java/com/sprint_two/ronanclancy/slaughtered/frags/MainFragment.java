@@ -1,5 +1,6 @@
 package com.sprint_two.ronanclancy.slaughtered.frags;
 
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import com.sprint_two.ronanclancy.slaughtered.adapters.SheepAdapter;
 import com.sprint_two.ronanclancy.slaughtered.db.SQLiteHelper;
 import com.sprint_two.ronanclancy.slaughtered.models.Sheep;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,8 +24,6 @@ import java.util.List;
  * Created by ronanclancy on 1/15/16.
  */
 public class MainFragment extends Fragment {
-
-    private static final String TOOLBAR_HOME_FRAG_TITLE = "Home";
 
     private RecyclerView sheepsRecyclerView;
 
@@ -38,7 +38,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_main, container, false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(TOOLBAR_HOME_FRAG_TITLE);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.drawer_menu_home);
 
         db = new SQLiteHelper(getContext());
 
@@ -50,6 +50,12 @@ public class MainFragment extends Fragment {
         initializeAdapter();
 
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("SHEEPS", (ArrayList<? extends Parcelable>) sheeps);
     }
 
 
