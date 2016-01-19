@@ -4,6 +4,29 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".frags.SheepFragment">
+    tools:context=".frags.SheepFragment"
+    android:weightSum="1">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/sheepProfilePic"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.03" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Age : "
+        android:id="@+id/txtAge"
+        android:layout_weight="0.03" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:id="@+id/txtAgeValue"
+        android:layout_weight="0.03" />
 
 </LinearLayout>
