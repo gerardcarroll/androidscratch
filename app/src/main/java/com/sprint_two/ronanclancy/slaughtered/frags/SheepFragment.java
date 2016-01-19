@@ -23,8 +23,6 @@ import com.sprint_two.ronanclancy.slaughtered.models.Sheep;
  * Created by ronanclancy on 1/15/16.
  */
 public class SheepFragment extends Fragment {
-
-    private static final String TOOLBAR_SHEEP_FRAG_TITLE = "Loads of Sheep";
     SQLiteHelper dbHelper;
 
     public SheepFragment() {
@@ -41,12 +39,14 @@ public class SheepFragment extends Fragment {
         assert ((AppCompatActivity)getActivity()).getSupportActionBar() != null;
 
         Bundle extras = getArguments();
-        int sheepId = extras.getInt("sheepId");
-        Sheep sheep = dbHelper.getSheep(sheepId);
+        Sheep sheep = extras.getParcelable("sheep");
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(sheep.getName());
         ImageView imageView = (ImageView) view.findViewById(R.id.sheepProfilePic);
         imageView.setImageResource(sheep.getPhotoId());
+
+        TextView txtAge = (TextView) view.findViewById(R.id.txtAgeValue);
+        txtAge.setText(sheep.getAge());
         return view;
     }
 

@@ -68,13 +68,13 @@ public class SheepAdapter extends RecyclerView.Adapter<SheepAdapter.SheepViewHol
             @Override
             public void onClick(View view) {
                 Bundle sheepData = new Bundle();
-                sheepData.putInt("sheepId", sheeps.get(position).getId());
+                sheepData.putParcelable("sheep", sheeps.get(position));
                 SheepFragment fragment = new SheepFragment();
                 android.support.v4.app.FragmentTransaction fragmentTransaction = ((FragmentActivity)context).getSupportFragmentManager().beginTransaction();
 
                 fragment.setArguments(sheepData);
                 fragmentTransaction.replace(R.id.fragment_container, fragment);
-
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });
