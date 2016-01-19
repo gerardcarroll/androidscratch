@@ -1,20 +1,14 @@
 package com.sprint_two.ronanclancy.slaughtered.frags;
 
 import android.content.DialogInterface;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,14 +31,14 @@ public class SheepFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        dbHelper  = new SQLiteHelper(getContext());
+        dbHelper = new SQLiteHelper(getContext());
 
         View view = inflater.inflate(R.layout.fragment_sheep, container, false);
 
-        assert ((AppCompatActivity)getActivity()).getSupportActionBar() != null;
+        assert ((AppCompatActivity) getActivity()).getSupportActionBar() != null;
 
         Bundle extras = getArguments();
-        Sheep sheep = extras.getParcelable("sheep");
+        final Sheep sheep = extras.getParcelable("sheep");
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(sheep.getName());
         ImageView imageView = (ImageView) view.findViewById(R.id.sheepProfilePic);
@@ -55,18 +49,21 @@ public class SheepFragment extends Fragment {
 
         TextView txtWeight = (TextView) view.findViewById(R.id.txtWeightValue);
         txtWeight.setText(sheep.getWeight());
+        final TextView txtStatus = (TextView) view.findViewById(R.id.txtStatus);
+        txtStatus.setText(sheep.getAlive() == 0 ? "Alive" : "Dead");
 
         Button button = (Button) view.findViewById(R.id.button);
-        button.setText("Kill "+sheep.getName());
+        button.setText("Kill " + sheep.getName());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Really!!!!!!");
-                builder.setMessage("Are you sure killer?");
+                builder.setMessage("Are you sure 'killer'?");
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // Do nothing but close the dialog
+                        dbHelper.killSheep(sheep.getId());
+                        txtStatus.setText("Dead");
                         dialog.dismiss();
                     }
                 });

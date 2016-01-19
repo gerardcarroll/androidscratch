@@ -39,6 +39,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     private static final String SHEEP_ALIVE = "0";
 
+    private static final String SHEEP_DEAD = "1";
+
     private static final String[] COLUMNS = {KEY_ID, KEY_NAME, KEY_AGE, KEY_WEIGHT, KEY_PHOTO_ID};
 
     public SQLiteHelper(Context context) {
@@ -108,20 +110,18 @@ public class SQLiteHelper extends SQLiteOpenHelper {
      * @param sheep sheep object to be updated
      * @return int
      */
-    public int updateSheepDead(Sheep sheep) {
+    public void killSheep(int sheepId) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_ALIVE, sheep.getAlive());
-
-        int inserted = db.update(DATABASE_TABLE_SHEEP,
+        values.put(KEY_ALIVE, SHEEP_DEAD);
+        db.update(DATABASE_TABLE_SHEEP,
                 values,
                 KEY_ID + " = ?",
-                new String[]{String.valueOf(sheep.getId())});
-        db.close();
+                new String[]{String.valueOf(sheepId)});
 
-        return inserted;
+        db.close();
     }
 
     /**
