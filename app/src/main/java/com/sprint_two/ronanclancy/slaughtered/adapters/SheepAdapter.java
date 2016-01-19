@@ -1,9 +1,15 @@
 package com.sprint_two.ronanclancy.slaughtered.adapters;
 
+
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +20,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sprint_two.ronanclancy.slaughtered.R;
+import com.sprint_two.ronanclancy.slaughtered.frags.SheepFragment;
+import com.sprint_two.ronanclancy.slaughtered.frags.SlaughteredSheepFragment;
 import com.sprint_two.ronanclancy.slaughtered.models.Sheep;
 
 import java.util.List;
 //cows are nicer
+import static android.support.v4.app.ActivityCompat.startActivity;
+
 /**
  * Sheep adapter
  * <p/>
@@ -57,8 +67,15 @@ public class SheepAdapter extends RecyclerView.Adapter<SheepAdapter.SheepViewHol
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, sheeps.get(position).name + " is lucky slaughter implementation is not complete", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Bundle sheepData = new Bundle();
+                sheepData.putInt("sheepId", sheeps.get(position).getId());
+                SheepFragment fragment = new SheepFragment();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = ((FragmentActivity)context).getSupportFragmentManager().beginTransaction();
+
+                fragment.setArguments(sheepData);
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+
+                fragmentTransaction.commit();
             }
         });
         setAnimation(holder.itemView, position);

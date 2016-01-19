@@ -38,6 +38,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.drawer_menu_home);
 
         db = new SQLiteHelper(getContext());
