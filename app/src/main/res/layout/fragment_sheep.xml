@@ -25,7 +25,6 @@
             android:paddingLeft="10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Age : "
-            android:id="@+id/txtAge"
             android:layout_weight="0.03"
             android:textAlignment="textEnd" />
 
@@ -48,7 +47,6 @@
             android:paddingLeft="10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Weight : "
-            android:id="@+id/txtWeight"
             android:layout_weight="0.03"
             android:textAlignment="textEnd" />
 
@@ -60,5 +58,15 @@
             android:id="@+id/txtWeightValue"
             android:layout_weight="0.03" />
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kill Sally"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.03"
+         />
+
 
 </LinearLayout>
