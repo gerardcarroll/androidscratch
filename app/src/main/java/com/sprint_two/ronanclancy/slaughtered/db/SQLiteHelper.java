@@ -105,10 +105,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * NEEDS REFACTOR!
-     *
-     * @param sheep sheep object to be updated
-     * @return int
+     * Method to kill a sheep
+     * @param sheepId id of the sheep to be killed
      */
     public void killSheep(int sheepId) {
 
