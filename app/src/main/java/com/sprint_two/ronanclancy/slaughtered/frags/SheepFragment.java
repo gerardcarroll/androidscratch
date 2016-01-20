@@ -67,8 +67,6 @@ public class SheepFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         dbHelper.slaughterSheep(sheep.getId());
                         txtStatus.setText("Dead");
-//                        button.setText(sheep.getName() + " is Dead :-(");
-                        button.setEnabled(false);
                         button.setVisibility(View.GONE);
                         dialog.dismiss();
                         Snackbar.make(getView(), sheep.getName() + " is no more :-(", Snackbar.LENGTH_LONG)
