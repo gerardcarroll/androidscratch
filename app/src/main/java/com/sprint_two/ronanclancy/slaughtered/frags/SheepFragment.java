@@ -2,6 +2,7 @@ package com.sprint_two.ronanclancy.slaughtered.frags;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -54,19 +55,22 @@ public class SheepFragment extends Fragment {
         final TextView txtStatus = (TextView) view.findViewById(R.id.txtStatus);
         txtStatus.setText(sheep.getAlive() == 0 ? "Alive" : "Dead");
 
-        Button button = (Button) view.findViewById(R.id.button);
-        button.setText("Kill " + sheep.getName());
+        final Button button = (Button) view.findViewById(R.id.button);
+        button.setText("Slaughter " + sheep.getName());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Really!!!!!!");
-                builder.setMessage("Are you sure 'killer'?");
+                builder.setMessage("Are you sure you want to slaughter " + sheep.getName());
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        dbHelper.killSheep(sheep.getId());
+                        dbHelper.slaughterSheep(sheep.getId());
                         txtStatus.setText("Dead");
+                        button.setVisibility(View.GONE);
                         dialog.dismiss();
+                        Snackbar.make(getView(), sheep.getName() + " is no more :-(", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
                     }
                 });
                 builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
