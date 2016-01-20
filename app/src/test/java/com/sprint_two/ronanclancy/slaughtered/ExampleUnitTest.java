@@ -3,6 +3,7 @@ package com.sprint_two.ronanclancy.slaughtered;
 import com.sprint_two.ronanclancy.slaughtered.models.Sheep;
 
 import org.junit.Test;
+import org.junit.internal.builders.JUnit3Builder;
 
 import static org.junit.Assert.*;
 
