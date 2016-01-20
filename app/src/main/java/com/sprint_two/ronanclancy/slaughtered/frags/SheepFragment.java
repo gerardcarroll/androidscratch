@@ -52,7 +52,7 @@ public class SheepFragment extends Fragment {
         final TextView txtStatus = (TextView) view.findViewById(R.id.txtStatus);
         txtStatus.setText(sheep.getAlive() == 0 ? "Alive" : "Dead");
 
-        Button button = (Button) view.findViewById(R.id.button);
+        final Button button = (Button) view.findViewById(R.id.button);
         button.setText("Kill " + sheep.getName());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +64,8 @@ public class SheepFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         dbHelper.killSheep(sheep.getId());
                         txtStatus.setText("Dead");
+                        button.setText(sheep.getName() + " is Dead :-(");
+                        button.setClickable(false);
                         dialog.dismiss();
                     }
                 });
