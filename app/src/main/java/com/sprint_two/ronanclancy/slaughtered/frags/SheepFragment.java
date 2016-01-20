@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import com.sprint_two.ronanclancy.slaughtered.models.Sheep;
  * Created by ronanclancy on 1/15/16.
  */
 public class SheepFragment extends Fragment {
+
     SQLiteHelper dbHelper;
 
     public SheepFragment() {
@@ -36,12 +38,12 @@ public class SheepFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_sheep, container, false);
 
-        assert ((AppCompatActivity) getActivity()).getSupportActionBar() != null;
-
         Bundle extras = getArguments();
         final Sheep sheep = extras.getParcelable("sheep");
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(sheep.getName());
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        actionBar.setTitle(sheep.getName());
+
         ImageView imageView = (ImageView) view.findViewById(R.id.sheepProfilePic);
         imageView.setImageResource(sheep.getPhotoId());
 
@@ -87,5 +89,8 @@ public class SheepFragment extends Fragment {
         return view;
     }
 
-
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 }
