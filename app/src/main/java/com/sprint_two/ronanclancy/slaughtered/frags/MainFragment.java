@@ -31,17 +31,25 @@ public class MainFragment extends Fragment {
 
     private RecyclerView sheepsRecyclerView;
 
-    private SheepAdapter adapter;
-
     private SQLiteHelper db;
 
     public MainFragment() {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState == null) {
+            db = new SQLiteHelper(getContext());
+            initializeData();
+        } else {
+            sheeps = savedInstanceState.getParcelableArrayList(SHEEP_LIST_SAVED_INSTANCE_KEY);
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = new SQLiteHelper(getContext());
 
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
@@ -51,14 +59,6 @@ public class MainFragment extends Fragment {
         sheepsRecyclerView = (RecyclerView) view.findViewById(R.id.sheep_recycler_view);
         sheepsRecyclerView.setLayoutManager(llm);
 
-        /**
-         * If savedInstance has our sheep list, no need to fetch it again
-         */
-        if (savedInstanceState != null) {
-            sheeps = savedInstanceState.getParcelableArrayList(SHEEP_LIST_SAVED_INSTANCE_KEY);
-        } else {
-            initializeData();
-        }
         initializeAdapter();
 
         return view;
@@ -70,13 +70,12 @@ public class MainFragment extends Fragment {
         outState.putParcelableArrayList(SHEEP_LIST_SAVED_INSTANCE_KEY, (ArrayList<? extends Parcelable>) sheeps);
     }
 
-
     private void initializeData() {
         sheeps = db.getAllLivingSheeps();
     }
 
     private void initializeAdapter() {
-        adapter = new SheepAdapter(sheeps, getContext());
+        SheepAdapter adapter = new SheepAdapter(sheeps, getContext());
         sheepsRecyclerView.setAdapter(adapter);
     }
 }
