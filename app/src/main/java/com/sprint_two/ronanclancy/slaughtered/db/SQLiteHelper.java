@@ -16,6 +16,8 @@ import java.util.List;
  * Handle SQLite
  * <p/>
  * Created by ronanclancy.
+ *
+ * Please see https://developer.android.com/training/basics/data-storage/databases.html
  */
 public class SQLiteHelper extends SQLiteOpenHelper {
 
