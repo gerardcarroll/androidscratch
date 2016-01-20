@@ -107,8 +107,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Method to kill a sheep
-     * @param sheepId id of the sheep to be killed
+     * Method to slaughter a sheep
+     * @param sheepId id of the sheep to be slaughtered
      */
     public void slaughterSheep(int sheepId) {
 
