@@ -35,26 +35,31 @@ public class EspressoTest extends ActivityInstrumentationTestCase2<MainActivity>
     }
 
     public void testHamburgerMenuDisplay() {
-        //onView(withId(R.id.sheep_recycler_view)).perform(click());
-        //onView(withContentDescription("Home")).perform(click());
-
+        /*
+         * Click on the hamburger menu,
+         * Check the drawer is displayed
+         * Swipe left
+         * Check the drawer is no longer displayed
+         */
         onView(withContentDescription("Open navigation drawer")).perform(click());
-        //onView(withId(R.id.toolbar)).perform(swipeRight());
-        //onView(withId(android.R.id.home)).perform(click());
         onView(withId(R.id.nav_view))
                 .check(matches(isDisplayed()));
-
         onView(withId(R.id.nav_view)).perform(swipeLeft());
         onView(withId(R.id.nav_view))
                 .check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)));
     }
 
     public void testNavDrawerLinks(){
+        /*
+            Click on the hamburger menu
+            Click on each of the links in the menu
+            Check something from the resulting page is displayed
+         */
         onView(withContentDescription("Open navigation drawer")).perform(click());
         onView(withText("Slaughtered Sheep")).perform(click());
-
+        // nothing to check here as the page is blank
+        // TODO - could check toolbar title, if we could figure out how to match it
         //onView(allOf(isDescendantOfA(withResourceName("android")))).check(matches(withText("Slaughtered Sheep")));
-
 
         onView(withContentDescription("Open navigation drawer")).perform(click());
         onView(withText("Home")).perform(click());
@@ -63,7 +68,6 @@ public class EspressoTest extends ActivityInstrumentationTestCase2<MainActivity>
 
         onView(withContentDescription("Open navigation drawer")).perform(click());
         onView(withText("Settings")).perform(click());
-
         onView(withText("Enlarge Font Size")).check(matches(isDisplayed()));
     }
 }
