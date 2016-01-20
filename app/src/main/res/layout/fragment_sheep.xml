@@ -1,97 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".frags.SheepFragment"
-    android:weightSum="1">
+    android:orientation="vertical"
+    tools:context=".frags.SheepFragment">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
         android:id="@+id/sheepProfilePic"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.03" />
-
-    <GridLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:rowCount="1">
+        android:layout_gravity="top"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="8dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Age : "
-            android:layout_weight="0.03"
-            android:ellipsize="end"
-            android:textAlignment="textEnd"
-            android:layout_column="0"
-            android:layout_row="0"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text=""
-            android:id="@+id/txtAgeValue"
-            android:layout_weight="0.03"
-            android:layout_column="1"
-            android:layout_row="0"/>
-    </GridLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Weight : "
-            android:layout_weight="0.03"
-            android:textAlignment="textEnd" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text=""
-            android:id="@+id/txtWeightValue"
-            android:layout_weight="0.03" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Status : "
-            android:layout_weight="0.03"
-            android:textAlignment="textEnd" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text=""
-            android:id="@+id/txtStatus"
-            android:layout_weight="0.03" />
-    </LinearLayout>
-
-    <Button
+    <TextView
+        android:id="@+id/txtAgeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/sheepProfilePic"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="Age : "
+        android:textSize="20sp"
+        android:textIsSelectable="true" />
+
+    <TextView
+        android:id="@+id/txtAgeValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sheepProfilePic"
+        android:layout_toEndOf="@+id/txtAgeLabel"
+        android:textSize="20sp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textWeightLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtAgeLabel"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textSize="20sp"
+        android:text="Weight : " />
+
+    <TextView
+        android:id="@+id/txtWeightValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtAgeLabel"
+        android:layout_toEndOf="@+id/textWeightLabel"
+        android:textSize="20sp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/statusLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="Status : "
+        android:textSize="20sp"
+        android:layout_below="@+id/textWeightLabel"/>
+
+    <TextView
+        android:id="@+id/txtStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="20sp"
+        android:layout_below="@+id/textWeightLabel"
+        android:layout_toEndOf="@+id/statusLabel"/>
+
+    <Button
         android:id="@+id/button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.03"
-         />
-
-
-</LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#1a1b1e"
+        android:textSize="16sp"
+        android:textColor="#fc0936" />
+</RelativeLayout>

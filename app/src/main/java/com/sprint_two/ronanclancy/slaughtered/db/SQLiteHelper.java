@@ -108,7 +108,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
      * Method to kill a sheep
      * @param sheepId id of the sheep to be killed
      */
-    public void killSheep(int sheepId) {
+    public void slaughterSheep(int sheepId) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
