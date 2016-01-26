@@ -42,34 +42,34 @@ public class SheepFragment extends Fragment {
         final Sheep sheep = extras.getParcelable("sheep");
 
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        actionBar.setTitle(sheep.getName());
+        actionBar.setTitle(sheep.name());
 
         ImageView imageView = (ImageView) view.findViewById(R.id.sheepProfilePic);
-        imageView.setImageResource(sheep.getPhotoId());
+        imageView.setImageResource(sheep.photoId());
 
         TextView txtAge = (TextView) view.findViewById(R.id.txtAgeValue);
-        txtAge.setText(sheep.getAge());
+        txtAge.setText(sheep.age());
 
         TextView txtWeight = (TextView) view.findViewById(R.id.txtWeightValue);
-        txtWeight.setText(sheep.getWeight());
+        txtWeight.setText(sheep.weight());
         final TextView txtStatus = (TextView) view.findViewById(R.id.txtStatus);
-        txtStatus.setText(sheep.getAlive() == 0 ? "Alive" : "Dead");
+        txtStatus.setText(sheep.alive() == 0 ? "Alive" : "Dead");
 
         final Button button = (Button) view.findViewById(R.id.button);
-        button.setText("Slaughter " + sheep.getName());
+        button.setText("Slaughter " + sheep.name());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Really!!!!!!");
-                builder.setMessage("Are you sure you want to slaughter " + sheep.getName());
+                builder.setMessage("Are you sure you want to slaughter " + sheep.name());
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        dbHelper.slaughterSheep(sheep.getId());
+                        dbHelper.slaughterSheep(sheep.id());
                         txtStatus.setText("Dead");
                         button.setVisibility(View.GONE);
                         dialog.dismiss();
-                        Snackbar.make(getView(), sheep.getName() + " is no more :-(", Snackbar.LENGTH_LONG)
+                        Snackbar.make(getView(), sheep.name() + " is no more :-(", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
                 });

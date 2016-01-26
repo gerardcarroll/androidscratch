@@ -2,16 +2,33 @@
 
 buildscript {
     repositories {
+        mavenLocal()
+        maven { url 'http://repository.overstock.com/content/groups/public' }
         jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.5.0'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
+ext {
+    auto_parcel_version = "0.3"
+    bundles_version = "1.0.4"
+    bundles = [
+            "com.neenbedankt.bundles:argument:${bundles_version}",
+            "com.neenbedankt.bundles:frozen:${bundles_version}"
+    ]
+    libraries = [
+            auto_parcel            : "com.github.frankiesardo:auto-parcel:$auto_parcel_version",
+            auto_parcel_apt        : 'com.github.frankiesardo:auto-parcel-processor:0.3',
+
+
+    ]
+}
 allprojects {
     repositories {
         jcenter()
