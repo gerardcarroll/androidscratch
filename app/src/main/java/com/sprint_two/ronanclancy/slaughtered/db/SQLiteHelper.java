@@ -90,13 +90,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         Sheep sheep;
         if (cursor.moveToFirst()) {
             do {
-                sheep = new Sheep();
-                sheep.setId(Integer.parseInt(cursor.getString(0)));
-                sheep.setName(cursor.getString(1));
-                sheep.setAge(cursor.getString(2));
-                sheep.setWeight(cursor.getString(3));
-                sheep.setPhotoId(cursor.getInt(4));
-                sheep.setAlive(cursor.getInt(5));
+                sheep = Sheep.create(Integer.parseInt(cursor.getString(0)),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getInt(4),
+                        cursor.getInt(5)
+
+                );
 
                 sheeps.add(sheep);
             } while (cursor.moveToNext());
@@ -132,7 +133,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Sheep sheep = new Sheep();
+        Sheep sheep=null;
 
         Cursor cursor =
                 db.query(DATABASE_TABLE_SHEEP, // a. table
@@ -148,12 +149,15 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         if (cursor != null) {
             cursor.moveToFirst();
 
-            sheep.setId(Integer.parseInt(cursor.getString(0)));
-            sheep.setId(Integer.parseInt(cursor.getString(0)));
-            sheep.setName(cursor.getString(1));
-            sheep.setAge(cursor.getString(2));
-            sheep.setWeight(cursor.getString(3));
-            sheep.setPhotoId(cursor.getInt(4));
+            sheep = Sheep.create(
+                    Integer.parseInt(cursor.getString(0)),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getInt(4),
+                    cursor.getInt(5)
+            );
+
             cursor.close();
         }
 

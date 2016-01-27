@@ -53,10 +53,10 @@ public class SheepAdapter extends RecyclerView.Adapter<SheepAdapter.SheepViewHol
      */
     @Override
     public void onBindViewHolder(SheepViewHolder holder, final int position) {
-        holder.sheepName.setText(sheeps.get(position).name);
-        holder.sheepAge.setText(sheeps.get(position).age);
-        holder.sheepWeight.setText(sheeps.get(position).weight);
-        holder.sheepPhoto.setImageResource(sheeps.get(position).photoId);
+        holder.sheepName.setText(sheeps.get(position).name());
+        holder.sheepAge.setText(sheeps.get(position).age());
+        holder.sheepWeight.setText(sheeps.get(position).weight());
+        holder.sheepPhoto.setImageResource(sheeps.get(position).photoId());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
