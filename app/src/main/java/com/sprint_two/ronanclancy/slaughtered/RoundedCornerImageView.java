@@ -27,16 +27,9 @@ public class RoundedCornerImageView extends ImageView {
 
         For a more complete example of a rounded-corner image view see: @link{https://github.com/Pkmmte/CircularImageView}
      */
-    public RoundedCornerImageView(Context context) {
-        super(context);
-    }
 
     public RoundedCornerImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
-    }
-
-    public RoundedCornerImageView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
     }
 
     @Override
@@ -73,7 +66,7 @@ public class RoundedCornerImageView extends ImageView {
 // rect contains the bounds of the shape
 // radius is the radius in pixels of the rounded corners
 // paint contains the shader that will texture the shape
-        int radius = 80;
+        int radius = 200;
         canvas.drawRoundRect(rect, radius, radius, paint);
     }
 
