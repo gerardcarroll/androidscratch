@@ -22,11 +22,5 @@ public abstract class Sheep implements Parcelable {
 
     public static Sheep create(int id, String name, String age, String weight, int photoId, int alive){
         return new AutoParcel_Sheep(id, name, age, weight, photoId, alive);
-    };
-
-
-    @Override
-    public int describeContents() {
-        return 0;
     }
 }
