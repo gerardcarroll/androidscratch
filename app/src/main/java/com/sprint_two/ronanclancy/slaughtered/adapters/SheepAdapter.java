@@ -12,10 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sprint_two.ronanclancy.slaughtered.R;
+import com.sprint_two.ronanclancy.slaughtered.RoundedCornerImageView;
 import com.sprint_two.ronanclancy.slaughtered.frags.SheepFragment;
 import com.sprint_two.ronanclancy.slaughtered.models.Sheep;
 
@@ -101,7 +101,7 @@ public class SheepAdapter extends RecyclerView.Adapter<SheepAdapter.SheepViewHol
         TextView sheepName;
         TextView sheepAge;
         TextView sheepWeight;
-        ImageView sheepPhoto;
+        RoundedCornerImageView sheepPhoto;
 
         SheepViewHolder(final View itemView) {
             super(itemView);
@@ -109,7 +109,7 @@ public class SheepAdapter extends RecyclerView.Adapter<SheepAdapter.SheepViewHol
             sheepName = (TextView) itemView.findViewById(R.id.sheep_name);
             sheepAge = (TextView) itemView.findViewById(R.id.sheep_age);
             sheepWeight = (TextView) itemView.findViewById(R.id.sheep_weight);
-            sheepPhoto = (ImageView) itemView.findViewById(R.id.sheep_photo);
+            sheepPhoto = (RoundedCornerImageView) itemView.findViewById(R.id.sheep_photo);
             setupPrefs(sheepName);
         }
     }
