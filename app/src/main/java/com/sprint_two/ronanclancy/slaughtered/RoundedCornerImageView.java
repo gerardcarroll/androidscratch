@@ -1,6 +1,7 @@
 package com.sprint_two.ronanclancy.slaughtered;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
@@ -10,6 +11,7 @@ import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ImageView;
 
 /**
@@ -20,16 +22,29 @@ public class RoundedCornerImageView extends ImageView {
 
     /*  Class to demo creating a custom view widget
         Creates an image view that has rounded corners
-
-        Inspired by:
-        * @link{http://stackoverflow.com/questions/2459916/how-to-make-an-imageview-with-rounded-corners}
-        * @link{http://stackoverflow.com/questions/16208365/create-a-circular-image-view-in-android}
-
-        For a more complete example of a rounded-corner image view see: @link{https://github.com/Pkmmte/CircularImageView}
      */
+    int radius;
 
     public RoundedCornerImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs,
+                R.styleable.RoundedCornerImageView,
+                0, 0);
+        try{
+            radius = a.getInt(R.styleable.RoundedCornerImageView_radius,0);
+        } finally {
+            a.recycle();
+        }
+    }
+
+    public int getRadius(){
+        return radius;
+    }
+
+    public void setRadius(int r){
+        radius = r;
+        invalidate();
+        requestLayout();
     }
 
     @Override
@@ -41,11 +56,9 @@ public class RoundedCornerImageView extends ImageView {
             return;
         }
 
-        if (getWidth() == 0 || getHeight() == 0) {
-            return;
-        }
+        int width = getWidth(), height = getHeight();
 
-        if (getWidth() == 0 || getHeight() == 0) {
+        if (width == 0 || height == 0) {
             return;
         }
 
@@ -55,18 +68,16 @@ public class RoundedCornerImageView extends ImageView {
         BitmapShader shader;
         shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
 
-        int width = getWidth(), height = getHeight();
-
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setShader(shader);
 
         RectF rect = new RectF(0.0f, 0.0f, width, height);
 
-// rect contains the bounds of the shape
-// radius is the radius in pixels of the rounded corners
-// paint contains the shader that will texture the shape
-        int radius = 200;
+        // rect contains the bounds of the shape
+        // radius is the radius in pixels of the rounded corners
+        // paint contains the shader that will texture the shape
+        Log.d("CUSTOM_VIEW","Rendering rounded rect with radius " + radius);
         canvas.drawRoundRect(rect, radius, radius, paint);
     }
 
