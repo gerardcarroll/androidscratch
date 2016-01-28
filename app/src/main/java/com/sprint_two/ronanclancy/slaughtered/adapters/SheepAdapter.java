@@ -15,7 +15,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.sprint_two.ronanclancy.slaughtered.R;
-import com.sprint_two.ronanclancy.slaughtered.RoundedCornerImageView;
+import com.sprint_two.ronanclancy.slaughtered.customviews.RoundedCornerImageView;
 import com.sprint_two.ronanclancy.slaughtered.frags.SheepFragment;
 import com.sprint_two.ronanclancy.slaughtered.models.Sheep;
 

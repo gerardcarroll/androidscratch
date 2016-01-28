@@ -1,4 +1,4 @@
-package com.sprint_two.ronanclancy.slaughtered;
+package com.sprint_two.ronanclancy.slaughtered.customviews;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -13,6 +13,8 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
+
+import com.sprint_two.ronanclancy.slaughtered.R;
 
 /**
  * Created by afinn on 1/27/2016.

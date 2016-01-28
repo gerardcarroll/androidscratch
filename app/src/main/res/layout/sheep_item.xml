@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.sprint_two.ronanclancy.slaughtered.RoundedCornerImageView
+            <com.sprint_two.ronanclancy.slaughtered.customviews.RoundedCornerImageView
                 android:id="@+id/sheep_photo"
                 android:layout_width="140sp"
                 android:layout_height="match_parent"
